@@ -1,0 +1,33 @@
+{
+  "name": "project-docs",
+  "version": "1.0.0",
+  "description": "Documentation project with TypeDoc, Sphinx, and MKDocs integration",
+  "main": "index.js",
+  "scripts": {
+    "docs:build": "npm run typedoc && python scripts/build-sphinx.py && mkdocs build",
+    "docs:serve": "mkdocs serve",
+    "docs:deploy": "mkdocs gh-deploy",
+    "typedoc": "typedoc src/typescript --out docs/api/typescript",
+    "typedoc:watch": "typedoc src/typescript --out docs/api/typescript --watch",
+    "sphinx:build": "python scripts/build-sphinx.py",
+    "dev": "concurrently \"npm run typedoc:watch\" \"mkdocs serve\"",
+    "clean": "rimraf site docs/api/typescript docs/api/python"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "typedoc": "^0.25.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "concurrently": "^8.0.0",
+    "rimraf": "^5.0.0"
+  },
+  "keywords": [
+    "documentation",
+    "mkdocs",
+    "typedoc",
+    "sphinx",
+    "mermaid"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}
