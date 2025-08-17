@@ -113,5 +113,13 @@ extra:
     provider: mike
     default: latest
 
+# Extra CSS for API documentation integration
+extra_css:
+  - stylesheets/api-integration.css
+
+# Static files
+extra_files:
+  - api/
+
 # Copyright
 copyright: Copyright &copy; 2025 lightuse
