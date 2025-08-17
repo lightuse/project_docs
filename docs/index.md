@@ -12,30 +12,20 @@
 
 ## 📚 ドキュメント構成
 
-### [アーキテクチャ](architecture/overview.md)
+### [アーキテクチャ](architecture/sequences.md)
 システムの全体設計とコンポーネント構成について説明します。
 
-- [システム設計](architecture/system-design.md)
 - [シーケンス図](architecture/sequences.md)
-
-### [API リファレンス](api/typescript/)
-自動生成されたAPIドキュメント
-
-- [TypeScript API](api/typescript/) - TypeDocで生成
-- [Python API](api/python/) - Sphinxで生成
 
 ### [開発ガイド](guides/development-setup.md)
 開発環境のセットアップと開発フロー
 
 - [開発環境構築](guides/development-setup.md)
-- [デプロイメントガイド](guides/deployment.md)
-- [ベストプラクティス](guides/best-practices.md)
 
-### [チュートリアル](tutorials/quickstart.md)
-段階的な学習コンテンツ
+### [図表](diagrams/flowcharts.md)
+システムの構造を視覚的に表現
 
-- [クイックスタート](tutorials/quickstart.md)
-- [応用的な使い方](tutorials/advanced.md)
+- [フローチャートと図表](diagrams/flowcharts.md)
 
 ## 🎯 クイックスタート
 

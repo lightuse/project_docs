@@ -55,10 +55,6 @@ plugins:
       type: date
   - minify:
       minify_html: true
-  - typedoc:
-      source: './src/typescript'
-      output_dir: 'api/typescript'
-      tsconfig: './tsconfig.json'
 
 # Markdown extensions
 markdown_extensions:
@@ -79,8 +75,8 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - admonition
   - codehilite:
       guess_lang: false
@@ -95,27 +91,13 @@ markdown_extensions:
 
 # Navigation
 nav:
-  - Home: 
-    - index.md
-    - Getting Started: getting-started.md
+  - Home: index.md
   - Architecture:
-    - Overview: architecture/overview.md
-    - System Design: architecture/system-design.md
     - Sequence Diagrams: architecture/sequences.md
-  - API Reference:
-    - TypeScript API: api/typescript/
-    - Python API: api/python/
   - Guides:
     - Development Setup: guides/development-setup.md
-    - Deployment Guide: guides/deployment.md
-    - Best Practices: guides/best-practices.md
-  - Tutorials:
-    - Quick Start: tutorials/quickstart.md
-    - Advanced Usage: tutorials/advanced.md
   - Diagrams:
-    - Sequence Diagrams: diagrams/sequence/
     - Flowcharts: diagrams/flowcharts.md
-    - Architecture Diagrams: diagrams/architecture.md
 
 # Extra
 extra:

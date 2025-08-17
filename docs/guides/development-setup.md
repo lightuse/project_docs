@@ -209,14 +209,13 @@ mkdocs gh-deploy --clean --dry-run
 
 環境セットアップが完了したら：
 
-1. [デプロイメントガイド](deployment.md)を確認
-2. [ベストプラクティス](best-practices.md)を参照
-3. 実際にドキュメントを作成してみる
+1. 実際にドキュメントを作成してみる
+2. MKDocsのライブリロードで変更を確認
+3. GitHub Pagesでの公開を試す
 
 ## サポート
 
 問題が発生した場合：
 
 - [GitHub Issues](https://github.com/username/project_docs/issues)
-- [開発者ドキュメント](../reference/development.md)
-- [FAQ](../reference/faq.md)
+- [プロジェクトREADME](../../README.md)を参照
