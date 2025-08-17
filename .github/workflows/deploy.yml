@@ -1,0 +1,93 @@
+name: Deploy MKDocs to GitHub Pages
+
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches:
+      - develop
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install Python dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Install Node.js dependencies
+        run: |
+          echo "Installing Node.js dependencies..."
+          npm install
+          echo "Node.js dependencies installed successfully"
+
+      - name: Generate TypeDoc documentation
+        continue-on-error: true
+        run: |
+          echo "Generating TypeDoc documentation..."
+          if [ -d "src/typescript" ]; then
+            npm run typedoc || echo "TypeDoc generation failed, continuing..."
+          else
+            echo "TypeScript source directory not found, skipping TypeDoc generation"
+          fi
+          echo "TypeDoc step completed"
+
+      - name: Generate Sphinx documentation
+        continue-on-error: true
+        run: |
+          echo "Generating Sphinx documentation..."
+          if [ -f "scripts/build-sphinx.py" ]; then
+            python scripts/build-sphinx.py || echo "Sphinx generation failed, continuing..."
+          else
+            echo "Sphinx build script not found, skipping Sphinx generation"
+          fi
+          echo "Sphinx step completed"
+
+      - name: Build MKDocs site
+        run: |
+          echo "Building MKDocs site..."
+          mkdocs build --clean
+          echo "MKDocs site built successfully"
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./site
+
+  deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
