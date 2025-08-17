@@ -12,6 +12,12 @@
 
 ## 📚 ドキュメント構成
 
+### [API リファレンス](api/typescript/index.html)
+自動生成されたAPIドキュメント
+
+- [TypeScript API](api/typescript/index.html) - TypeDocで生成
+- [Python API](api/python/index.html) - Sphinxで生成
+
 ### [アーキテクチャ](architecture/sequences.md)
 システムの全体設計とコンポーネント構成について説明します。
 
