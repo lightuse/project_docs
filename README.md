@@ -38,17 +38,28 @@ GitHub Pages上でホスティングされる包括的なドキュメントサ�
 git clone https://github.com/lightuse/project_docs.git
 cd project_docs
 
-# 2. Python依存関係のインストール
+# 2. 依存関係のインストール
+npm install
 pip install -r requirements.txt
 
-# 3. Node.js依存関係のインストール
-npm install
+# 3. TypeScript API文書を生成
+npm run typedoc
 
-# 4. サンプルファイルの生成とドキュメントビルド
-npm run docs:build
+# 4. Python API文書を生成
+npm run sphinx:build
 
-# 5. ローカルサーバーの起動
+# 5. MKDocsサイトをビルド
+mkdocs build
+
+# 6. ローカルサーバーの起動
 mkdocs serve
+```
+
+または、一括セットアップ:
+
+```bash
+# すべての依存関係インストールとビルド
+npm run setup
 ```
 
 ブラウザで http://localhost:8000 にアクセスして確認してください。
@@ -145,7 +156,10 @@ npm run dev
 # TypeScript API文書を生成
 npm run typedoc
 
-# または、ウォッチモードで開発
+# または、直接npxで実行
+npx typedoc src/typescript --out docs/api/typescript
+
+# ウォッチモードで開発
 npm run typedoc:watch
 ```
 
@@ -181,7 +195,7 @@ graph LR
 
 GitHub Actionsによる自動デプロイが設定されています：
 
-1. `main`ブランチにプッシュ
+1. `develop`ブランチにプッシュ
 2. 自動的にビルドとデプロイが実行
 3. GitHub Pagesで公開
 
@@ -255,7 +269,45 @@ extra_css:
 - テストを通す
 - コミットメッセージは明確に
 
-## 📄 ライセンス
+## � トラブルシューティング
+
+### よくある問題
+
+#### TypeDoc: command not found
+
+```bash
+# 解決方法1: npxを使用
+npx typedoc src/typescript --out docs/api/typescript
+
+# 解決方法2: 依存関係を再インストール
+npm install
+
+# 解決方法3: グローバルインストール (非推奨)
+npm install -g typedoc
+```
+
+#### Python関連エラー
+
+```bash
+# 仮想環境の確認
+python --version
+pip --version
+
+# 依存関係の再インストール
+pip install -r requirements.txt --force-reinstall
+```
+
+#### MKDocsビルドエラー
+
+```bash
+# 設定ファイルの確認
+mkdocs config
+
+# 清潔なビルド
+mkdocs build --clean
+```
+
+## �📄 ライセンス
 
 このプロジェクトはMITライセンスの下で公開されています。詳細は[LICENSE](LICENSE)ファイルをご覧ください。
 
