@@ -92,6 +92,9 @@ markdown_extensions:
 # Navigation
 nav:
   - Home: index.md
+  - API Documentation:
+    - TypeScript API: api/typescript/index.html
+    - Python API: api/python/index.html
   - Architecture:
     - Sequence Diagrams: architecture/sequences.md
   - Guides:
@@ -110,6 +113,14 @@ extra:
   version:
     provider: mike
     default: latest
+
+# Extra CSS for API documentation integration
+extra_css:
+  - stylesheets/api-integration.css
+
+# Static files
+extra_files:
+  - api/
 
 # Copyright
 copyright: Copyright &copy; 2025 lightuse

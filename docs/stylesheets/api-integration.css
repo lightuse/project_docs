@@ -1,0 +1,96 @@
+/* API Documentation Integration Styles */
+
+/* TypeDoc and Sphinx integration */
+.api-integration {
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: 0.2rem;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.api-link {
+  display: inline-block;
+  background: var(--md-primary-fg-color);
+  color: white !important;
+  padding: 0.5rem 1rem;
+  border-radius: 0.2rem;
+  text-decoration: none;
+  margin: 0.25rem;
+  transition: background-color 0.2s ease;
+}
+
+.api-link:hover {
+  background: var(--md-accent-fg-color);
+  text-decoration: none;
+}
+
+/* Responsive iframe for external docs */
+.api-iframe-container {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: 0.2rem;
+  overflow: hidden;
+}
+
+.api-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* External link indicators */
+a[href$=".html"]:after {
+  content: "↗";
+  font-size: 0.8em;
+  margin-left: 0.25rem;
+  opacity: 0.6;
+}
+
+/* Documentation type badges */
+.doc-type-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.2rem;
+  background: var(--md-default-fg-color--lighter);
+  color: var(--md-default-bg-color);
+  margin-left: 0.5rem;
+  font-weight: 500;
+}
+
+.doc-type-badge.typescript {
+  background: #007ACC;
+}
+
+.doc-type-badge.python {
+  background: #3776ab;
+}
+
+/* API documentation notice */
+.api-notice {
+  background: var(--md-code-bg-color);
+  border-left: 0.2rem solid var(--md-accent-fg-color);
+  padding: 0.8rem;
+  margin: 1rem 0;
+  border-radius: 0 0.2rem 0.2rem 0;
+}
+
+.api-notice .api-notice-title {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 768px) {
+  .api-iframe-container {
+    height: 400px;
+  }
+  
+  .api-link {
+    display: block;
+    text-align: center;
+    margin: 0.5rem 0;
+  }
+}

@@ -46,18 +46,47 @@ Error: HttpError: Not Found
    - **Read and write permissions** を選択
    - **Allow GitHub Actions to create and approve pull requests** をチェック
 
-#### 3. カスタムドメイン
+#### 3. 環境保護ルールエラー
+```
+Branch "develop" is not allowed to deploy to github-pages due to environment protection rules.
+```
 
-カスタムドメインを使用する場合：
+**解決方法:**
+1. Repository Settings > Environments > github-pages
+2. "Deployment branches" を確認
+3. 許可されたブランチに `develop` が含まれているか確認
+4. または、ワークフローが正しい `develop` ブランチから実行されているか確認
 
-1. Repository Settings > Pages
-2. "Custom domain" に独自ドメインを入力
-3. DNSでCNAMEレコードを設定：
-   ```
-   www.yourdomain.com → username.github.io
-   ```
+## 環境保護設定
 
-## 📊 デプロイメント状況確認
+GitHub Pagesの環境保護ルールを適切に設定します：
+
+### 環境設定の確認
+
+1. **Repository Settings** > **Environments** に移動
+2. **github-pages** 環境をクリック
+3. **Deployment branches** セクションを確認
+
+### 推奨設定
+
+```yaml
+# 推奨: Protected branches only
+Deployment branches: Protected branches only
+
+# または: Selected branches
+Selected branches: 
+  - develop
+```
+
+### 設定変更手順
+
+1. **Add deployment branch rule** をクリック
+2. ブランチパターンを入力:
+   - `develop` (メインブランチ)
+   - `refs/heads/develop` (完全パス)
+3. **Add rule** で保存
+
+## �📊 デプロイメント状況確認
 
 ### GitHub Actions
 
@@ -74,7 +103,7 @@ Error: HttpError: Not Found
 ## 🔄 再デプロイ
 
 ### 自動デプロイ
-- `main`ブランチへのプッシュで自動実行
+- `develop`ブランチへのプッシュで自動実行
 
 ### 手動デプロイ
 1. GitHub Actions タブ
@@ -93,7 +122,7 @@ permissions:
 
 on:
   push:
-    branches: [main]
+    branches: [develop]
   workflow_dispatch: # 手動実行
 ```
 
@@ -108,10 +137,8 @@ repo_url: https://github.com/username/project_docs
 
 ## 💡 ベストプラクティス
 
-1. **ブランチ保護**: `main`ブランチの保護ルール設定
+1. **ブランチ保護**: `develop`ブランチの保護ルール設定
 2. **プレビュー**: プルリクエストでのプレビュー機能
-3. **バージョニング**: `mike` によるバージョン管理
-4. **監視**: デプロイメントのアラート設定
 
 ---
 
