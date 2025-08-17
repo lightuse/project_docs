@@ -92,6 +92,8 @@ markdown_extensions:
 # Navigation
 nav:
   - Home: index.md
+  - TypeDoc: api/typescript/index.html
+  - API: api/python/index.html
   - Architecture:
     - Sequence Diagrams: architecture/sequences.md
   - Guides:
