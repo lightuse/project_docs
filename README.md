@@ -53,6 +53,16 @@ mkdocs serve
 
 ブラウザで http://localhost:8000 にアクセスして確認してください。
 
+## 🌐 GitHub Pages設定
+
+GitHub Pagesでのホスティングを有効にするには：
+
+1. **Repository Settings** > **Pages** に移動
+2. **Source** を **"GitHub Actions"** に設定  
+3. `main`ブランチにプッシュで自動デプロイ
+
+詳細は [GitHub Pages設定ガイド](GITHUB_PAGES_SETUP.md) をご覧ください。
+
 ## 📁 プロジェクト構成
 
 ```
